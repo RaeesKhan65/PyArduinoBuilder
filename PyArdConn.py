@@ -32,4 +32,4 @@ class PyArduinoConn:
         except:
             print("Error")
 
-PyArduinoConn("test").newSketch()
+PyArduinoConn("AWG_External_Trigger").compileSketch()
