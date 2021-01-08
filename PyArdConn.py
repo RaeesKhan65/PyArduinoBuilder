@@ -7,7 +7,7 @@ class PyArduinoConn:
     def __init__(self,name):
         self.path = Path.joinpath(Path().resolve(),"ArduinoSketches",name)
         self.core = "arduino:sam:arduino_due_x_dbg"
-        self.board = "/dev/cu.usbmodem14201"
+        self.port = "/dev/cu.usbmodem14201"
 
 
     def newSketch(self):
@@ -15,7 +15,7 @@ class PyArduinoConn:
         try:
             subprocess.run(["arduino-cli","sketch","new",self.path,"-v"])
         except:
-            print("Error")
+            print("Terminal Error")
 
 
     def compileSketch(self):
@@ -23,14 +23,14 @@ class PyArduinoConn:
         try:
             subprocess.run(["arduino-cli","compile","-b",self.core,self.path,"-v"])
         except:
-            print("Error")
+            print("Terminal Error")
 
     def uploadSketch(self):
 
         try:
-            subprocess.run(["arduino-cli","upload","-b",self.core,"-p",self.board,self.path,"-v"])
+            subprocess.run(["arduino-cli","upload","-b",self.core,"-p",self.port,self.path,"-v"])
         except:
-            print("Error")
+            print("Terminal Error")
 
 
 if __name__ == '__main__':
